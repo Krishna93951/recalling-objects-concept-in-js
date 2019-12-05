@@ -81,3 +81,23 @@ function obj(){
   // delete food.SouthIndian;
 }
 obj();
+
+
+//freezing an object helps in not able to change the Object - like we cannot add new property or delete property.
+function objFreeze(){
+  var language = {
+    Germany:'German',
+    Finland:'Finnish'
+  }
+
+  Object.freeze(language);
+
+  // delete language.Finland;
+
+  // language.India = 'Hindi';
+
+  
+
+  console.log(language);
+}
+objFreeze();
