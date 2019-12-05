@@ -1,12 +1,6 @@
 // Import stylesheets
 import './style.css';
 
-// Write Javascript code!
-
-// Object creation ways: 
-// 1.new keyword
-// 2.{}
-
 //accessing Object :
 // Dot 
 // Square brackets 
@@ -42,7 +36,10 @@ function objLooping(){
 }
 objLooping();
 
-function obj(){
+// Object creation ways: 
+// 1.new keyword
+// 2.{}
+function objCreation(){
   //1
   var currency = new Object();
   currency.Dollar = '$';
@@ -79,12 +76,14 @@ function obj(){
 
   //throws error as configurable is false
   // delete food.SouthIndian;
-}
-obj();
+  };
+  objCreation();
 
+//freezing an object helps in not able to change the Object - like we cannot add new property or delete property ,chaning data descriptors and changing prototype.The existing properties cannot be modified.
+(function (){
 
-//freezing an object helps in not able to change the Object - like we cannot add new property or delete property.
-function objFreeze(){
+ 
+  var objFreeze = function (){
   var language = {
     Germany:'German',
     Finland:'Finnish'
@@ -92,12 +91,32 @@ function objFreeze(){
 
   Object.freeze(language);
 
+  //cannot modify existing properties
+  //language.Germany='KK';
+  
   // delete language.Finland;
 
   // language.India = 'Hindi';
-
-  
-
   console.log(language);
+  }
+  objFreeze();
+})();
+
+
+//Sealing an object will prevent addition of new properties into objects and making existing properties as non configurable (deletable). The existing properties can be modified with they are writable. 
+
+function objSeal(){
+  var digits = {
+    1:'one',
+    2:'two',
+    3:'three',
+  }
+  // Object.defineProperty(digits,2,{
+  //   writable:false
+  // })
+  console.log(digits);
+  Object.seal(digits);
+  digits[2] = 'TWO';
+  console.log(digits);
 }
-objFreeze();
+objSeal();
